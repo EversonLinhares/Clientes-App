@@ -24,6 +24,7 @@ export class ClientesListaComponent implements OnInit {
     this.service
     .getClientes()
     .subscribe( resposta => this.clientes = resposta)
+    //this.clientes = this.service.getClientes();
   }
 
   novoCadastro(){
@@ -39,7 +40,8 @@ export class ClientesListaComponent implements OnInit {
     .deletar(this.clienteSelecionado)
     .subscribe( response => {
       this.mensagemSucesso ='Cliente deletado com sucesso!'
-      this.ngOnInit();
+      this.ngOnInit()
+      this.mensagemSucesso = '';
     
     },
     erro => this.mensagemErro= 'Ocorreu um erro ao deletar o cliente ');
