@@ -60,7 +60,9 @@ export class ClientesFormComponent implements OnInit {
      .subscribe( response =>{
        this.success= true;
        this.errors = null;
-       this.cliente = response;
+       setTimeout(() => {
+         this.router.navigate(['/clientes-lista']);
+       }, 2000);
       }, errorResponse =>{
         this.success = false;
         this.errors = errorResponse.error.errors;
