@@ -39,6 +39,9 @@ export class ServicoPrestadoFormComponent implements OnInit {
      }, errorResponse =>{
        this.success = false;
        this.errors = errorResponse.error.errors;
+       setTimeout(() => {
+        this.errors= null;
+      }, 5000);
      })
   }
 
