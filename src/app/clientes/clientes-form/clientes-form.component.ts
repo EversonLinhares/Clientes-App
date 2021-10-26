@@ -39,11 +39,12 @@ export class ClientesFormComponent implements OnInit {
   }
 
   voltar(){
-     this.router.navigate(['/clientes-lista'])
+     this.router.navigate(['/clientes/lista'])
   }
 
   onSubmit(){
     if(this.id){
+      console.log('1')
         this.service
         .atualizar(this.cliente)
         .subscribe(response => {
@@ -51,6 +52,9 @@ export class ClientesFormComponent implements OnInit {
           this.errors = null;
         }, errorResponse => {
           this.errors = ['Erro ao atualizar o cliente.']
+          setTimeout(()=> {
+            this.router.navigate(['/clientes/lista'])
+          }, 2000)
         }
         )
     }else{
@@ -58,15 +62,20 @@ export class ClientesFormComponent implements OnInit {
      this.service
      .salvar(this.cliente)
      .subscribe( response =>{
+      console.log('2')
        this.success= true;
        this.errors = null;
        setTimeout(() => {
-         this.router.navigate(['/clientes-lista']);
-       }, 2000);
+         this.router.navigate(['/clientes/lista']);
+       }, 2000)
       }, errorResponse =>{
         this.success = false;
+        console.log('3')
         this.errors = errorResponse.error.errors;
-        
+        setTimeout(()=> {
+          this.ngOnInit()
+          this.errors = null
+        }, 2000);
       })
       
   }
