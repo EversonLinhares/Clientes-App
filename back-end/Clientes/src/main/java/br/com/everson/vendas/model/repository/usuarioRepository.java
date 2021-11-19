@@ -9,4 +9,5 @@ import br.com.everson.vendas.model.entity.Usuario;
 public interface usuarioRepository  extends JpaRepository<Usuario, Long>{
 	Optional<Usuario> findByUsername(String username);
 
+    boolean existsByUsername(String username);
 }

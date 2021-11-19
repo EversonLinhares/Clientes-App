@@ -13,9 +13,9 @@ export class LoginComponent  {
 
   username: string;
   password: string;
-  loginError: boolean;
   cadastrando: boolean;
   mensagemSucesso: string;
+  errors: String[];
 
   constructor(
     private router: Router,
@@ -42,16 +42,18 @@ export class LoginComponent  {
         .salvar(usuario)
         .subscribe( response => {
           this.mensagemSucesso= "Cadastro realizado com sucesso! Efetue o login";
-          this.loginError=false;
           this.cadastrando=false;
           this.username ='';
           this.password = '';
           setTimeout(()=>{
             this.mensagemSucesso= '';
           },2000)
-        },error =>{
-          this.loginError= true;
+        },errorResponse =>{
+          this.errors = errorResponse.error.errors;
           this.mensagemSucesso=null;
+          setTimeout(() => {
+            this.errors = null;
+          }, 3000);
         }
         )
   }
