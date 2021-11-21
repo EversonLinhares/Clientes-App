@@ -22,6 +22,7 @@ export class ServicoPrestadoListaComponent implements OnInit {
   }
  
   consultar(){
+    
     console.log('Nome',this.nome)
     console.log('Mes', this.mes)
     this.service

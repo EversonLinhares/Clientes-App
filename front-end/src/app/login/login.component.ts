@@ -23,7 +23,15 @@ export class LoginComponent  {
   ) { }
 
   onSubmit(){
-    this.router.navigate(['/home']);
+    this.authService
+    .tentarLogar(this.username, this.password)
+    .subscribe(response => {
+      const access_token = JSON.stringify(response);
+      localStorage.setItem('access_token', access_token)
+      this.router.navigate(['/home'])
+    }, errorResponse =>{
+      this.errors = ['Usuário e/ou senha incorreto(s).']
+    })
   }
 
   preparaCadastrar(event){
@@ -50,7 +58,8 @@ export class LoginComponent  {
           },2000)
         },errorResponse =>{
           this.errors = errorResponse.error.errors;
-          this.mensagemSucesso=null;
+          this.username= '';
+          this.password= '';
           setTimeout(() => {
             this.errors = null;
           }, 3000);

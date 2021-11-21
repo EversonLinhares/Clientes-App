@@ -18,11 +18,21 @@ export class ClientesService {
         return this.http.post<Cliente>(`${this.apiURL}` , cliente);
    }
    atualizar( cliente: Cliente ) : Observable<any> {
-        return this.http.put<Cliente>(`${this.apiURL}/${cliente.id}` , cliente);
+    const tokenString = localStorage.getItem('access_token')
+    const token = JSON.parse(tokenString)
+    const headers = {
+       'Authorization' : 'Bearer ' + token.access_token
+     }
+        return this.http.put<Cliente>(`${this.apiURL}/${cliente.id}` , cliente, {h} );
    }
    
    getClientes() :Observable<Cliente[]> {
-     return this.http.get<Cliente[]>(`${this.apiURL}`);
+    const tokenString = localStorage.getItem('access_token')
+    const token = JSON.parse(tokenString)
+    const headers = {
+       'Authorization' : 'Bearer ' + token.access_token
+     }
+     return this.http.get<Cliente[]>(this.apiURL, { headers });
    }
    /*getClientes() : Cliente[]{
      let cliente = new Cliente();
