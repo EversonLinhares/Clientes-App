@@ -18,23 +18,20 @@ export class ClientesService {
         return this.http.post<Cliente>(`${this.apiURL}` , cliente);
    }
    atualizar( cliente: Cliente ) : Observable<any> {
-    const tokenString = localStorage.getItem('access_token')
-    const token = JSON.parse(tokenString)
-    const headers = {
-       'Authorization' : 'Bearer ' + token.access_token
-     }
-        return this.http.put<Cliente>(`${this.apiURL}/${cliente.id}` , cliente, {h} );
+        return this.http.put<Cliente>(`${this.apiURL}/${cliente.id}` , cliente );
    }
    
-   getClientes() :Observable<Cliente[]> {
+   /* como era passado token   
     const tokenString = localStorage.getItem('access_token')
-    const token = JSON.parse(tokenString)
-    const headers = {
-       'Authorization' : 'Bearer ' + token.access_token
-     }
-     return this.http.get<Cliente[]>(this.apiURL, { headers });
+     const token = JSON.parse(tokenString)
+     const headers = {
+        'Authorization' : 'Bearer ' + token.access_token
+      } */
+   getClientes() :Observable<Cliente[]> {
+     return this.http.get<Cliente[]>(this.apiURL, /* { headers } */);
    }
-   /*getClientes() : Cliente[]{
+   /* populando clientes na mão 
+   getClientes() : Cliente[]{
      let cliente = new Cliente();
      cliente.id= 1;
      cliente.nome= "fulano";

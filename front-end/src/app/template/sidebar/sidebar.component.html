@@ -4,15 +4,16 @@
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Sistema</div>
                 <a class="nav-link" routerLink="/home">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                Home</a>
-                <div class="sb-sidenav-menu-heading">Cadastros</div>
-                <a class="nav-link collapsed" routerLink="/clientes" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"><div class="sb-nav-link-icon"><i class="fas fa-route"></i></div>
-                Clientes</a>
-
-                <a class="nav-link collapsed" routerLink="/servicos-prestados" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"><div class="sb-nav-link-icon"><i class="fas fa-route"></i></div>
-                Serviços Prestados</a>
-                </div>
+                    <div class="sb-nav-link-icon"><i class="fas fa-home fa-2x"></i></div>
+                    Home</a>
+                    <div class="sb-sidenav-menu-heading">Cadastros</div>
+                    <a class="nav-link collapsed" routerLink="/clientes" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"><div class="sb-nav-link-icon"><i class="fas fa-route"></i></div>
+                        Clientes</a>
+                        
+                        <a class="nav-link collapsed" routerLink="/servicos-prestados" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"><div class="sb-nav-link-icon"><i class="fas fa-route"></i></div>
+                            Serviços Prestados</a>
+                        </div>
+                        <button class="btn btn-danger " style="margin-top: 20px; vertical-align: top;"  (click)="sair()">Sair</button>  
             </div>
         <div class="sb-sidenav-footer">
             <div class="small">Produced by:</div>
